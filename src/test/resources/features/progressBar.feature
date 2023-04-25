@@ -8,4 +8,5 @@ Feature: Progress Bar Action
     When click startStopButton
     Then Verify progress bar value is "50"
     When click startStopButton
+    And  progress bar continue until value is "100"
     Then verify button name is Reset

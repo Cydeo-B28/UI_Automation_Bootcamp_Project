@@ -31,6 +31,10 @@ public class ProgressBarSteps {
     @Then("verify button name is Reset")
     public void verifyButtonNameIsReset() {
 
+        String actualText = progressBarPage.resetButton.getText();
+
+        System.out.println("actualText = " + actualText);
+
     }
 
     @Then("Verify progress bar value is {string}")
