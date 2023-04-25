@@ -19,7 +19,7 @@ public class AccordianStepsDefs {
     }
     @When("click {string} accordion")
     public void click_accordion(String number) throws InterruptedException {
-
+        accordianPage.scrollDown();
         accordianPage.getAccordian(number).click();
         Thread.sleep(1000);
 
