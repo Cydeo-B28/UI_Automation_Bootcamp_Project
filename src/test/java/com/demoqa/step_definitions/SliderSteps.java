@@ -12,20 +12,28 @@ public class SliderSteps {
     SliderPage sliderPage = new SliderPage();
 
     Actions actions = new Actions(Driver.getDriver());
-    @When("make some slider actions")
-    public void make_some_slider_actions() {
 
-        actions.dragAndDropBy(sliderPage.sliderInput, 20,0).perform();
+    int sliderBarInitialValue;
+    int sliderBarAfterValue;
 
+    @When("make some slider actions to {string}")
+    public void makeSomeSliderActionsTo(String input) {
+        sliderBarInitialValue = Integer.valueOf(sliderPage.inputValue.getAttribute("value"));
 
+        if(input.equalsIgnoreCase("increase")){
+            actions.dragAndDropBy(sliderPage.sliderInput, 20,0).perform();
+        }
     }
 
-    @Then("verify you make correct")
-    public void verify_you_make_correct() {
+    @Then("verify slider value {string}")
+    public void verifySliderValue(String outcome) {
 
-        String sliderBarValue = sliderPage.inputValue.getAttribute("value");
+        sliderBarAfterValue = Integer.valueOf(sliderPage.inputValue.getAttribute("value"));
+        System.out.println("sliderBarAfterValue = " + sliderBarAfterValue);
 
-        System.out.println("sliderBarValue = " + sliderBarValue);
+        if(outcome.equalsIgnoreCase("increased")){
+            Assert.assertTrue(sliderBarAfterValue > sliderBarInitialValue);
+        }
 
     }
 }
