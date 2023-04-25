@@ -14,7 +14,14 @@ public class AccordianPage extends BasePage{
             return Driver.getDriver().findElement(By.cssSelector(locator));
         }
 
+        // if you were only testing the second one
+        @FindBy(xpath = "//div[@id='section2Content']/..")
+        public WebElement secondAccordian;
 
+        public WebElement getCollapsedInfoForAccordian(String number){
+            String locator = "//div[@id='section"+number+"Content']/..";
+            return Driver.getDriver().findElement(By.xpath(locator));
+        }
 
     }
 

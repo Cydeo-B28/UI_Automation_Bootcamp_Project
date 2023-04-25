@@ -20,11 +20,11 @@ public class AccordianStepsDefs {
     @When("click {string} accordion")
     public void click_accordion(String number) {
 
-        // create a method that will take number as parameter and will return WebElement to click
+        accordianPage.getAccordian(number).click();
 
     }
     @Then("verify text is opened for {string}")
-    public void verify_text_is_opened() {
+    public void verify_text_is_opened(String number) {
 
 
     }

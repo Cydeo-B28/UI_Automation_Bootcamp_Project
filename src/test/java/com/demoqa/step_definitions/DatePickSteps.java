@@ -25,7 +25,7 @@ public class DatePickSteps {
     }
 
     @And("select any date data as {string} {string} {string}")
-    public void select_Any_Date_Data_as(String month, String year, String day) throws InterruptedException {
+    public void select_Any_Date_Data_as(String month, String year, String day) {
 
     }
 
