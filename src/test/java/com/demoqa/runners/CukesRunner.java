@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/demoqa/step_definitions",
         dryRun = false,
-        tags = "@slider",
+        tags = "@accordian",
         publish = true //generating a report with public link
 )
 public class CukesRunner {}

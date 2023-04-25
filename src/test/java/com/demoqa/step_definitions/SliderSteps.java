@@ -22,6 +22,10 @@ public class SliderSteps {
 
         if(input.equalsIgnoreCase("increase")){
             actions.dragAndDropBy(sliderPage.sliderInput, 20,0).perform();
+        }else if(input.equalsIgnoreCase("decrease")){
+            actions.dragAndDropBy(sliderPage.sliderInput, -20,0).perform();
+        }else{
+            System.out.println("wrong input");
         }
     }
 
@@ -33,6 +37,10 @@ public class SliderSteps {
 
         if(outcome.equalsIgnoreCase("increased")){
             Assert.assertTrue(sliderBarAfterValue > sliderBarInitialValue);
+        }else if(outcome.equalsIgnoreCase("decreased")){
+            Assert.assertTrue(sliderBarInitialValue > sliderBarAfterValue );
+        }else{
+            System.out.println("wrong output");
         }
 
     }
