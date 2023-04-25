@@ -18,7 +18,7 @@ public class SliderSteps {
 
     @When("make some slider actions to {string}")
     public void makeSomeSliderActionsTo(String input) {
-        sliderBarInitialValue = Integer.valueOf(sliderPage.inputValue.getAttribute("value"));
+        sliderBarInitialValue = Integer.parseInt(sliderPage.inputValue.getAttribute("value"));
 
         if(input.equalsIgnoreCase("increase")){
             actions.dragAndDropBy(sliderPage.sliderInput, 20,0).perform();
@@ -32,7 +32,7 @@ public class SliderSteps {
     @Then("verify slider value {string}")
     public void verifySliderValue(String outcome) {
 
-        sliderBarAfterValue = Integer.valueOf(sliderPage.inputValue.getAttribute("value"));
+        sliderBarAfterValue = Integer.valueOf(sliderPage.inputValue.getAttribute("value")); // Java do casting for from Integer to int
         System.out.println("sliderBarAfterValue = " + sliderBarAfterValue);
 
         if(outcome.equalsIgnoreCase("increased")){

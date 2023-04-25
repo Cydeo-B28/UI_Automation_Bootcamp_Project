@@ -1,5 +1,6 @@
 Feature: accordian actions on page
 
+  @accordian
   Scenario: verify changing when click accordians
     Given Navigate to "accordian" page
     When click "2" accordion
@@ -10,8 +11,7 @@ Feature: accordian actions on page
 
   # To_Do: Turn it into a Scenario Outline: verify changing when click accordians
 
-  @accordian
-  Scenario Outline: verify different accordian actions
+  Scenario Outline: verify different accordian actions "<number>"
     Given Navigate to "accordian" page
     When click "<number>" accordion
     Then verify class text is "open" for "<number>"
