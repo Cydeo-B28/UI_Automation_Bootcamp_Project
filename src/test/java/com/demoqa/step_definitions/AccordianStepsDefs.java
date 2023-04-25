@@ -23,7 +23,7 @@ public class AccordianStepsDefs {
         // create a method that will take number as parameter and will return WebElement to click
 
     }
-    @Then("verify text is opened")
+    @Then("verify text is opened for {string}")
     public void verify_text_is_opened() {
 
 

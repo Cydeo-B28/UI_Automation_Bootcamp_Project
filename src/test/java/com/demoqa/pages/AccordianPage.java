@@ -9,13 +9,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class AccordianPage extends BasePage{
 
-    @FindBy(xpath = "//div[@class='card'][1]/div[2]")
-    public WebElement aboutCollapse;
+        public WebElement getAccordian(String number){
+            String locator = "#section"+number+"Heading";
+            return Driver.getDriver().findElement(By.cssSelector(locator));
+        }
 
 
-    public String selectAttributeOfClass() {
 
-        return aboutCollapse.getAttribute("class");
-    }
     }
 
