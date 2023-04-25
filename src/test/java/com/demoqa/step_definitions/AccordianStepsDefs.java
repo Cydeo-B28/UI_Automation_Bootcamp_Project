@@ -18,20 +18,27 @@ public class AccordianStepsDefs {
         Driver.getDriver().get(baseUrl+path);
     }
     @When("click {string} accordion")
-    public void click_accordion(String number) {
+    public void click_accordion(String number) throws InterruptedException {
 
         accordianPage.getAccordian(number).click();
-
-    }
-    @Then("verify text is opened for {string}")
-    public void verify_text_is_opened(String number) {
-
+        Thread.sleep(1000);
 
     }
 
-    @And("verify {string} text closed again")
-    public void verifyTextClosedAgain(String number) {
 
 
+    @Then("verify class text is {string} for {string}")
+    public void verifyClassTextIsFor(String stateOfAccordian, String number) {
+        String collapsedInfo = accordianPage.getCollapsedInfoForAccordian(number).getAttribute("class");
+
+        System.out.println("collapsedInfo = " + collapsedInfo);
+
+        if(stateOfAccordian.equalsIgnoreCase("open")){
+            Assert.assertEquals("collapse show",collapsedInfo);
+        }else if(stateOfAccordian.equalsIgnoreCase("close")){
+            Assert.assertEquals("collapse",collapsedInfo);
+        }else {
+            System.out.println("Undefined Status");
+        }
     }
 }
