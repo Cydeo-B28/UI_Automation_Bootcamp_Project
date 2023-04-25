@@ -10,8 +10,12 @@ import org.openqa.selenium.interactions.Actions;
 public class SliderSteps {
 
     SliderPage sliderPage = new SliderPage();
+
+    Actions actions = new Actions(Driver.getDriver());
     @When("make some slider actions")
-    public void make_some_slider_actions() throws InterruptedException {
+    public void make_some_slider_actions() {
+
+        actions.dragAndDropBy(sliderPage.sliderInput, 20,0).perform();
 
 
     }
@@ -19,7 +23,9 @@ public class SliderSteps {
     @Then("verify you make correct")
     public void verify_you_make_correct() {
 
+        String sliderBarValue = sliderPage.inputValue.getAttribute("value");
 
+        System.out.println("sliderBarValue = " + sliderBarValue);
 
     }
 }
