@@ -12,24 +12,33 @@ import java.time.Duration;
 
 public class ProgressBarSteps {
 
-    ProgressBarPage progressBar = new ProgressBarPage();
+    ProgressBarPage progressBarPage = new ProgressBarPage();
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(),Duration.ofSeconds(10));
 
     @When("click startStopButton")
     public void click_start_stop_button() {
-        progressBar.startStopButton.click();
+        progressBarPage.startStopButton.click();
     }
 
     @When("progress bar continue until value is {string}")
     public void progress_bar_continue_until_value_is(String value) {
+        wait.pollingEvery(Duration.ofMillis(10));
+        wait.until(ExpectedConditions.attributeToBe(progressBarPage.progressBar,"aria-valuenow",value));
 
     }
 
-    @When("progressbar value is {string}")
-    public void progressbarValueIs(String resetValue) {
 
-    }
     @Then("verify button name is Reset")
     public void verifyButtonNameIsReset() {
+
+    }
+
+    @Then("Verify progress bar value is {string}")
+    public void verifyProgressBarValueIs(String expectedValue) {
+
+        String actualValue = progressBarPage.progressBar.getAttribute("aria-valuenow");
+
+        System.out.println("actualValue = " + actualValue);
 
     }
 }

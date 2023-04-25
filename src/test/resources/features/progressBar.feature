@@ -5,5 +5,7 @@ Feature: Progress Bar Action
     Given Navigate to "progress-bar" page
     When click startStopButton
     And  progress bar continue until value is "50"
-    When progressbar value is "100"
+    When click startStopButton
+    Then Verify progress bar value is "50"
+    When click startStopButton
     Then verify button name is Reset
